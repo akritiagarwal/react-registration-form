@@ -1,4 +1,5 @@
 import alt from '../alt';
+import request from 'es6-request'
 
 class FormActions {
     constructor() {
@@ -16,20 +17,6 @@ class FormActions {
             'invalidEmail',
             'invalidQuestion',
         );
-    }
-
-    addCharacter(userDetails) {
-        $.ajax({
-            type: 'POST',
-            url: '/api/User',
-            data: userDetails
-        })
-            .done((data) => {
-                this.actions.addCharacterSuccess(data.message);
-            })
-            .fail((jqXhr) => {
-                this.actions.addCharacterFail($.parseJSON(response.responseText).message);
-            });
     }
 }
 

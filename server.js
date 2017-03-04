@@ -9,12 +9,11 @@ var ReactDOM = require('react-dom/server');
 var Router = require('react-router');
 var routes = require('./app/routes');
 var mongoose = require('mongoose');
-var User = require('./models/User');
 var async = require('async');
 var request = require('request');
 var xml2js = require('xml2js');
 var app = express();
-app.set('port', process.env.PORT || 3000);
+app.set('port', process.env.PORT || 8000);
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -27,23 +26,7 @@ mongoose.connection.on('error', function() {
 });
 
 
-app.post('/api/User', function(req, res, next) {
-    var user = new User();
-    user.userName = req.body.userName;
-    user.userEmail = req.body.userEmail;
-    user.gender = req.body.gender;
-    user.dateOfBirth = req.body.dateOfBirth;
-    user.question = req.body.question;
 
-    user.save(function (err) {
-        if(err){
-            return res.send(err);
-        }
-        else{
-            res.json({ message: 'User created!' });
-        }
-    })
-});
 
 app.use(function(req, res) {
     Router.match({ routes: routes.default, location: req.url }, function(err, redirectLocation, renderProps) {

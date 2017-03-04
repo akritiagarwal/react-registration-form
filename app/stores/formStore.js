@@ -4,10 +4,10 @@ import FormActions from '../actions/formActions';
 class FormStore {
     constructor() {
         this.bindActions(FormActions);
-        this.name = '';
+        this.name  = '';
         this.gender = '';
         this.email='';
-        this.dob='';
+        this.dateOfBirth='';
         this.question=''
         this.helpBlock = '';
         this.nameValidationState = '';
@@ -40,7 +40,7 @@ class FormStore {
         this.emailValidationState = '';
     }
     onUpdateDate(event) {
-        this.dob = event.target.value;
+        this.dateOfBirth = event.target.value;
     }
     onUpdateQuestion(event) {
         this.question = event.target.value;

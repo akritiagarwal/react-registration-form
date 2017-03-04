@@ -1,3 +1,3 @@
 module.exports = {
-    database: process.env.MONGO_URI || 'localhost/askmonk'
+    database: process.env.MONGO_URI || 'localhost/askmonks'
 };
